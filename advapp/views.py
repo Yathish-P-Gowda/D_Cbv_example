@@ -1,7 +1,8 @@
 from typing import Any
 from. import models
+from django.urls import reverse_lazy
 from django.shortcuts import render
-from django.views.generic import View,TemplateView,ListView,DetailView
+from django.views.generic import (View,TemplateView,ListView,DetailView,CreateView,UpdateView,DeleteView)
 # from django.http import HttpResponse
 # # Create your views here.
 
@@ -29,3 +30,20 @@ class SchoolDetailView(DetailView):
     context_object_name='school_detail'
     model = models.School  # it returns just model lower case (school)
     template_name = 'advapp/schoold_details.html'
+    
+class SchoolCreateView(CreateView):
+    fields = '__all__'
+    model=models.School
+    template_name = 'advapp/school_form.html'
+
+
+class SchollUpdateView(UpdateView):
+    fields=('name','principal')
+    model = models.School
+    template_name = 'advapp/school_update.html'
+    
+class SchoolDelete_view(DeleteView):
+    model = models.School
+    success_url = reverse_lazy("advapp:list")
+    template_name = 'advapp/school_delete.html'
+    
