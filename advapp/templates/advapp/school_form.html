@@ -1,1 +1,16 @@
+{% extends 'advapp/advapp-base.html' %}
+{% block body_block %}
+<h1>
+    {% if not form.instance.pk %} <!--it checks if the primary ke exists or not if not create a school or else update the exsisting school  -->
 
+    Create School
+    {% else%}
+    Update School
+    {% endif %}
+</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" class="btn btn-primary" value="submit">
+</form>
+{% endblock %}
