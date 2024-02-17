@@ -1,0 +1,17 @@
+{% extends 'advapp/advapp-base.html' %}
+{% block body_block %}
+
+<div class="Jumbotron">
+    <h1> Welcome to the School details page</h1>
+    <h2>School Details</h2>
+    <p>Name: {{ school_detail.name }}</p>
+    <p>Principal: {{ school_detail.principal }}</p>
+    <p>Location: {{ school_detail.location }}</p>
+    <h3>Students:</h3>
+
+    {% for student in school_detail.students.all %} '' this students.all comes from models .py file name related names''
+    <p>{{ student.name }} who is {{ student.age }} years old.</p>
+    {% endfor %}
+</div>
+
+{% endblock %}
